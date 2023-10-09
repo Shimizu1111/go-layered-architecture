@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      # MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: user-test
+    ports:
+      - "3321:3306"
+    volumes:
+      - ./script:/docker-entrypoint-initdb.d # 初期化スクリプトのマウント
+
+volumes:
+  mysql-data:
+
